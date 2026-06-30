@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="ytdlp wrapper/ytdlp wrapper.vcxproj" Id="ca73bd66-60f2-41e3-aa78-7bea64e23f6b" />
+</Solution>

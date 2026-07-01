@@ -14,7 +14,7 @@ A lightweight and efficient C++ graphical interface (GUI) wrapper for the popula
 
 ### Prerequisites
 * [Visual Studio 2026](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&channel=Stable&version=VS18&source=VSLandingPage&cid=2500&passive=false) (with the **Desktop development with C++** workload installed).
-* The latest version of the [yt-dlp executable]().
+* The latest version of the [yt-dlp executable](https://github.com/yt-dlp/yt-dlp/releases/).
 
 ### Building from Source
 1. Open the solution file `ytdlp wrapper.slnx` in Visual Studio 2026.

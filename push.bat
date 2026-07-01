@@ -2,7 +2,7 @@
 set /p msg="Enter your commit message: "
 
 echo Configuring GPG path for Windows CMD...
-git config --local gpg.program "C:\Program Files\Git\usr\bin\gpg.exe"
+git config --local gpg.program "C:/Program Files/Git/usr/bin/gpg.exe"
 
 echo Staging changes...
 git add .
@@ -21,13 +21,15 @@ echo Securely uploading code to GitHub...
 powershell -Command "Get-Clipboard" > "%USERPROFILE%\.ssh\id_git"
 icacls "%USERPROFILE%\.ssh\id_git" /inheritance:r /grant:r "%USERNAME%:F" >nul
 
-:: Force Git to use Windows OpenSSH with the temporary file for this push
-set GIT_SSH_COMMAND=C:\Windows\System32\OpenSSH\ssh.exe -i %USERPROFILE%\.ssh\id_git
+:: Forward slashes prevent Git from stripping backslashes out of the Windows path
+set GIT_SSH_COMMAND=C:/Windows/System32/OpenSSH/ssh.exe -i %USERPROFILE%/.ssh/id_git
 git push origin main
 
 echo Cleaning up temporary security keys...
 del /f /q "%USERPROFILE%\.ssh\id_git"
-powershell -Command "Clear-Clipboard"
+
+:: Universal clipboard clearing method for Windows Command Prompt
+echo off | clip
 
 echo Done! Complete process secure.
 pause

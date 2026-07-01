@@ -23,10 +23,11 @@ A lightweight and efficient C++ graphical interface (GUI) wrapper for the popula
 4. The compiled executable will be generated inside your project output folder.
 
 ## 🛠️ Usage
-1. Place the `yt-dlp.exe` binary in the same directory as your compiled wrapper.
-2. Launch the wrapper executable.
-3. Paste your desired media link into the URL input box.
-4. Click download and watch the progress update automatically.
+1. Place the `yt-dlp.exe` binary in the same directory as your compiled wrapper OR put it in PATH.
+2. Launch the Setup.ps1 File.
+3. Launch the wrapper executable.
+4. Paste your desired media link into the URL input box.
+5. Click download and watch the progress update automatically.
 
 ## 📜 License
 This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.

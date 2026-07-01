@@ -13,7 +13,7 @@ A lightweight and efficient C++ graphical interface (GUI) wrapper for the popula
 ## 🚀 Getting Started
 
 ### Prerequisites
-* [Visual Studio 2026](https://microsoft.com) (with the **Desktop development with C++** workload installed).
+* [Visual Studio 2026](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&channel=Stable&version=VS18&source=VSLandingPage&cid=2500&passive=false) (with the **Desktop development with C++** workload installed).
 * The latest version of the [yt-dlp executable]().
 
 ### Building from Source

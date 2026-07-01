@@ -17,7 +17,7 @@ A lightweight and efficient C++ graphical interface (GUI) wrapper for the popula
 * The latest version of the [yt-dlp executable]().
 
 ### Building from Source
-1. Open the solution file `ytdlp wrapper.slnx` in Visual Studio 2022.
+1. Open the solution file `ytdlp wrapper.slnx` in Visual Studio 2026.
 2. Set your build configuration to **Release** and your architecture to **x64**.
 3. Go to the top menu and select **Build > Build Solution**.
 4. The compiled executable will be generated inside your project output folder.

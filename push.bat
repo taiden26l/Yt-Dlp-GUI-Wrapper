@@ -18,17 +18,18 @@ echo =======================
 pause
 
 echo Securely uploading code to GitHub...
-powershell -Command "Get-Clipboard" > "%USERPROFILE%\.ssh\id_git"
-icacls "%USERPROFILE%\.ssh\id_git" /inheritance:r /grant:r "%USERNAME%:F" >nul
+:: Save the temporary key directly in the current project directory to bypass user profile paths
+powershell -Command "Get-Clipboard" > "./id_git"
+icacls "./id_git" /inheritance:r /grant:r "%USERNAME%:F" >nul
 
-:: Forward slashes prevent Git from stripping backslashes out of the Windows path
-set GIT_SSH_COMMAND=C:/Windows/System32/OpenSSH/ssh.exe -i %USERPROFILE%/.ssh/id_git
+:: Use clean relative forward-slash routing for the localized key file
+set GIT_SSH_COMMAND=C:/Windows/System32/OpenSSH/ssh.exe -i ./id_git
 git push origin main
 
 echo Cleaning up temporary security keys...
-del /f /q "%USERPROFILE%\.ssh\id_git"
+del /f /q "./id_git"
 
-:: Universal clipboard clearing method for Windows Command Prompt
+:: Clear out your system clipboard
 echo off | clip
 
 echo Done! Complete process secure.

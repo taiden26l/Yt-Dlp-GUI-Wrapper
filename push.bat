@@ -17,13 +17,17 @@ echo 2. Copy your Github SSH private key to your clipboard.
 echo =======================
 pause
 
-echo Securely uploading code to GitHub...
-:: Save the temporary key directly in the current project directory to bypass user profile paths
+echo Preparing temporary security key...
 powershell -Command "Get-Clipboard" > "./id_git"
 icacls "./id_git" /inheritance:r /grant:r "%USERNAME%:F" >nul
 
-:: Use clean relative forward-slash routing for the localized key file
+:: Set up the secure SSH configuration variable
 set GIT_SSH_COMMAND=C:/Windows/System32/OpenSSH/ssh.exe -i ./id_git
+
+echo Syncing with GitHub (Pulling latest remote changes)...
+git pull origin main --rebase
+
+echo Securely uploading code to GitHub...
 git push origin main
 
 echo Cleaning up temporary security keys...

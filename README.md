@@ -1,4 +1,4 @@
-# Yt-Dlp-GUI-Wrapper
+# Yt-Dlp-GUI-Wrapper V0.0.2
 
 A lightweight and efficient C++ graphical interface (GUI) wrapper for the popular `yt-dlp` tool. Designed for users who want the full power of `yt-dlp` without having to deal with the command-line interface (CLI).
 

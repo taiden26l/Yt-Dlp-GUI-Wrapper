@@ -86,6 +86,9 @@
     <ClCompile Include="ffmpeg\FfmpegCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ffmpeg\FfmpegManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ytdlp wrapper.rc">

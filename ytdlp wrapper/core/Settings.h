@@ -19,6 +19,7 @@ struct AppSettings {
     bool downloadSubs = false;
     AccentColor accentColor;
     std::string ytDlpPath;
+    std::string ffmpegPath;
 };
 
 class SettingsStore {

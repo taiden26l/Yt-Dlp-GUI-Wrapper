@@ -150,6 +150,7 @@
     <ClCompile Include="download\DownloadManager.cpp" />
     <ClCompile Include="download\YtDlpCommand.cpp" />
     <ClCompile Include="ffmpeg\FfmpegCommand.cpp" />
+    <ClCompile Include="ffmpeg\FfmpegManager.cpp" />
     <ClCompile Include="ui\MainWindow.cpp" />
     <ClCompile Include="utils\SimpleJson.cpp" />
     <ClCompile Include="utils\SystemPaths.cpp" />

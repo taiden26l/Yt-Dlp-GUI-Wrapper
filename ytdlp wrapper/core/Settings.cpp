@@ -26,6 +26,7 @@ AppSettings SettingsStore::Load() {
     utils::simplejson::TryGetBool(json, "embedThumbnail", settings.embedThumbnail);
     utils::simplejson::TryGetBool(json, "downloadSubs", settings.downloadSubs);
     utils::simplejson::TryGetString(json, "ytDlpPath", settings.ytDlpPath);
+    utils::simplejson::TryGetString(json, "ffmpegPath", settings.ffmpegPath);
     utils::simplejson::TryGetNumber(json, "accentR", settings.accentColor.r);
     utils::simplejson::TryGetNumber(json, "accentG", settings.accentColor.g);
     utils::simplejson::TryGetNumber(json, "accentB", settings.accentColor.b);
@@ -43,6 +44,7 @@ bool SettingsStore::Save(const AppSettings& settings) {
         "  \"embedThumbnail\": " + utils::simplejson::BoolToString(settings.embedThumbnail) + ",\n"
         "  \"downloadSubs\": " + utils::simplejson::BoolToString(settings.downloadSubs) + ",\n"
         "  \"ytDlpPath\": \"" + utils::simplejson::EscapeString(settings.ytDlpPath) + "\",\n"
+        "  \"ffmpegPath\": \"" + utils::simplejson::EscapeString(settings.ffmpegPath) + "\",\n"
         "  \"accentR\": " + utils::simplejson::NumberToString(settings.accentColor.r) + ",\n"
         "  \"accentG\": " + utils::simplejson::NumberToString(settings.accentColor.g) + ",\n"
         "  \"accentB\": " + utils::simplejson::NumberToString(settings.accentColor.b) + ",\n"

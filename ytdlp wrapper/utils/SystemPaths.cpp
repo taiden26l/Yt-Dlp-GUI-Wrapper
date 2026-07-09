@@ -162,6 +162,63 @@ bool BrowseForExecutable(HWND owner, std::string& path, const wchar_t* title) {
     return true;
 }
 
+bool BrowseForFile(HWND owner, std::string& path, const char* filter, const wchar_t* title) {
+    std::vector<char> fileBuffer(4096, '\0');
+    if (!path.empty()) {
+        strncpy_s(fileBuffer.data(), fileBuffer.size(), path.c_str(), _TRUNCATE);
+    }
+
+    OPENFILENAMEA dialog{};
+    dialog.lStructSize = sizeof(dialog);
+    dialog.hwndOwner = owner;
+    dialog.lpstrFilter = filter != nullptr ? filter : "All Files\0*.*\0";
+    dialog.lpstrFile = fileBuffer.data();
+    dialog.nMaxFile = static_cast<DWORD>(fileBuffer.size());
+    dialog.Flags = OFN_FILEMUSTEXIST | OFN_PATHMUSTEXIST;
+
+    std::string titleUtf8;
+    if (title != nullptr) {
+        titleUtf8 = WideToUtf8(title);
+        dialog.lpstrTitle = titleUtf8.c_str();
+    }
+
+    if (!GetOpenFileNameA(&dialog)) {
+        return false;
+    }
+
+    path = fileBuffer.data();
+    return true;
+}
+
+bool BrowseForSaveFile(HWND owner, std::string& path, const char* filter, const wchar_t* title, const char* defaultExtension) {
+    std::vector<char> fileBuffer(4096, '\0');
+    if (!path.empty()) {
+        strncpy_s(fileBuffer.data(), fileBuffer.size(), path.c_str(), _TRUNCATE);
+    }
+
+    OPENFILENAMEA dialog{};
+    dialog.lStructSize = sizeof(dialog);
+    dialog.hwndOwner = owner;
+    dialog.lpstrFilter = filter != nullptr ? filter : "All Files\0*.*\0";
+    dialog.lpstrFile = fileBuffer.data();
+    dialog.nMaxFile = static_cast<DWORD>(fileBuffer.size());
+    dialog.Flags = OFN_PATHMUSTEXIST | OFN_OVERWRITEPROMPT | OFN_NOREADONLYRETURN;
+    dialog.lpstrDefExt = defaultExtension;
+
+    std::string titleUtf8;
+    if (title != nullptr) {
+        titleUtf8 = WideToUtf8(title);
+        dialog.lpstrTitle = titleUtf8.c_str();
+    }
+
+    if (!GetSaveFileNameA(&dialog)) {
+        return false;
+    }
+
+    path = fileBuffer.data();
+    return true;
+}
+
 void OpenUrl(const std::string& url) {
     ShellExecuteW(nullptr, L"open", Utf8ToWide(url).c_str(), nullptr, nullptr, SW_SHOW);
 }

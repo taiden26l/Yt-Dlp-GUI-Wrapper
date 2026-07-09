@@ -18,6 +18,8 @@ bool FindExecutableInPath(const std::string& exeName, std::string* resolvedPath)
 
 bool BrowseForFolder(HWND owner, std::string& path);
 bool BrowseForExecutable(HWND owner, std::string& path, const wchar_t* title);
+bool BrowseForFile(HWND owner, std::string& path, const char* filter, const wchar_t* title);
+bool BrowseForSaveFile(HWND owner, std::string& path, const char* filter, const wchar_t* title, const char* defaultExtension);
 void OpenUrl(const std::string& url);
 std::string FormatEta(int seconds);
 

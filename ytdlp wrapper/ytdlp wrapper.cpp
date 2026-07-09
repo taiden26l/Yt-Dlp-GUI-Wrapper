@@ -11,6 +11,7 @@
 
 #include "core/Settings.h"
 #include "download/DownloadManager.h"
+#include "ffmpeg/FfmpegManager.h"
 #include "ui/MainWindow.h"
 
 #pragma comment(lib, "d3d11.lib")
@@ -173,7 +174,11 @@ int WINAPI WinMain(HINSTANCE instance, HINSTANCE, LPSTR, int) {
     downloadManager.SetYtDlpPath(settings.ytDlpPath);
     downloadManager.RefreshDependencies();
 
-    ui::MainWindow mainWindow(hwnd, settings, downloadManager);
+    ffmpeg::FfmpegManager ffmpegManager;
+    ffmpegManager.Start();
+    ffmpegManager.SetFfmpegPath(settings.ffmpegPath);
+
+    ui::MainWindow mainWindow(hwnd, settings, downloadManager, ffmpegManager);
 
     MSG message{};
     while (message.message != WM_QUIT) {
@@ -198,6 +203,7 @@ int WINAPI WinMain(HINSTANCE instance, HINSTANCE, LPSTR, int) {
 
     core::SettingsStore::Save(settings);
     downloadManager.Shutdown();
+    ffmpegManager.Shutdown();
 
     ImGui_ImplDX11_Shutdown();
     ImGui_ImplWin32_Shutdown();
